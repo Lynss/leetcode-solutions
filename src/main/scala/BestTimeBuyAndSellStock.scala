@@ -2,8 +2,8 @@ object BestTimeBuyAndSellStock extends App {
   def maxProfit(prices: Array[Int]): Int = {
     if (prices.isEmpty) return 0
     ((0, prices.head) /: prices.tail) {
-      case ((maxProfix, minPrice), price) =>
-        (math.max(maxProfix, price - minPrice), math.min(minPrice, price))
+      case ((maxProfit, minPrice), price) =>
+        (math.max(maxProfit, price - minPrice), math.min(minPrice, price))
     }._1
   }
 
