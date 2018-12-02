@@ -11,34 +11,26 @@ object RemoveKDigits extends App {
   }
 
   def removeKdigits(num: String, k: Int): String = {
-    if (num.length == k) return "0"
-    if (k == 0) return num
-    val nh :: nt = num.toList
-    val stack = mutable.Stack[Char](nh)
-    val before = mutable.ListBuffer[Char]()
-
+    val n = num.length
+    val stack = mutable.Stack[Char]()
+    var i = 0
     @tailrec
-    def fillK(nl: List[Char]): List[Char] = {
-      if (nl.isEmpty) return Nil
-      if (stack.length == k) return nl
-      val nlh :: nlt = nl
-      if (stack.top > nlh) {
-        stack.push(nlh)
-        fillK(nlt)
-      } else {
-        before.append(stack.pop())
-        stack.push(nlh)
-        fillK(nlt)
+    def fillK(nl: List[Char]): Unit= {
+      if(nl.nonEmpty){
+        while(i != k&& stack.nonEmpty&& stack.top>nl.head ){
+          stack.pop()
+          i+=1
+        }
+        stack.push(nl.head)
+        fillK(nl.tail)
       }
     }
 
-    reduceZero(
-      before
-        .appendAll(fillK(nt))
-        .toString
-        .substring(0, num.length - stack.length))
+     fillK(num.toList)
+    val temp = stack.drop(k-i).reverse.mkString
+    reduceZero(temp)
   }
 
-  val temp = removeKdigits("1432219", 3)
+  val temp = removeKdigits("1432219",3)
   temp
 }
