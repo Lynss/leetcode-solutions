@@ -1,7 +1,7 @@
 import scala.annotation.tailrec
 import scala.collection.mutable
 
-object NumberofIslands extends App {
+object NumberOfIslands extends App {
   def numIslands(grid: Array[Array[Char]]): Int = {
     val is = mutable.Set[(Int, Int)]()
     var n = 0
@@ -9,10 +9,12 @@ object NumberofIslands extends App {
     if (row == 0) return 0
     val col = grid(0).length
     if (col == 0) return 0
-    val islandQueue = mutable.Queue[(Int,Int)]()
+    val islandQueue = mutable.Queue[(Int, Int)]()
 
     def judgeAndAdd(x: Int, y: Int): Unit = {
-      if (x >= 0 && y >= 0 && x <= row-1 && y <= col-1 && grid(x)(y) == '1' && !is(x, y)) {
+      if (x >= 0 && y >= 0 && x <= row - 1 && y <= col - 1 && grid(x)(y) == '1' && !is(
+            x,
+            y)) {
         islandQueue.enqueue((x, y))
         is.add(x, y)
       }
@@ -26,7 +28,7 @@ object NumberofIslands extends App {
       judgeAndAdd(x, y + 1)
       judgeAndAdd(x, y - 1)
       islandQueue.dequeue()
-      if(islandQueue.nonEmpty) {
+      if (islandQueue.nonEmpty) {
         fillIsland(islandQueue.head._1, islandQueue.head._2)
       }
     }
@@ -44,5 +46,6 @@ object NumberofIslands extends App {
     n
   }
 
-  numIslands(Array(Array('1', '1', '1'), Array('0', '1', '0'), Array('1', '1', '1')))
+  numIslands(
+    Array(Array('1', '1', '1'), Array('0', '1', '0'), Array('1', '1', '1')))
 }
