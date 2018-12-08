@@ -3,7 +3,7 @@ val a = '3'
 a.toInt
 //subString
 val b = "123123"
-b.substring(0, b.length)
+b.substring(0,b.length)
 //toInt
 val ints = "01321"
 ints.splitAt(0)
@@ -37,3 +37,10 @@ val test = "aa"
 //map
 val m = Map(1 -> 2)
 m(2)
+ints.prefixLength(_.toString.toInt <4)
+//char add
+"a"+'1'
+//string tail
+"1".tail
+//span
+ints.span(_.toString.toInt<3)
