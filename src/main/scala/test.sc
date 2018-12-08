@@ -33,3 +33,7 @@ math.sqrt(3).toInt
 val test = "aa"
 
 1 == 1.00000000000000000000001
+
+//map
+val m = Map(1 -> 2)
+m(2)
