@@ -11,7 +11,7 @@ class UndirectedGraphNode {
         label = x;
         neighbors = new ArrayList<>();
     }
-};
+}
 
 public class CloneGraph {
     Map<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
