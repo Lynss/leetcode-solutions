@@ -1,3 +1,6 @@
+Option(null)
+//null==
+null==null
 //regex
 val r =
   """(\d+)\[([^\[\]])*\]""".r
